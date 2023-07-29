@@ -22,7 +22,7 @@ public:
 private:
 	float velX, velY;
 	float posX, posY;
-	float mass;
+	//float mass; Add mass of a particle/object
 	int radius;
 	sf::Color color;
 	sf::CircleShape particleShape;
