@@ -3,7 +3,7 @@
 Button::Button(float sizeX, float sizeY, float posX, float posY, sf::Color btnColor): sizeX(sizeX), sizeY(sizeY), posX(posX), posY(posY), btnColor(btnColor)
 {
 	button.setSize(sf::Vector2f(this->sizeX, this->sizeY));
-	button.setOrigin(0.5f * this->sizeX, -0.5f * this->sizeY);
+	button.setOrigin(0.5f * this->sizeX, 0.5f * this->sizeY);
 	button.setPosition(this->posX, this->posY);
 	button.setFillColor(this->btnColor);
 	
@@ -44,10 +44,8 @@ bool Button::isMouseOver(sf::RenderWindow& window)
 {
 	float mousePosX = sf::Mouse::getPosition(window).x;
 	float mousePosY = sf::Mouse::getPosition(window).y;
-	// Mouse over does not work properly. There is an offset
 	if (mousePosX > posX - 0.5f * sizeX && mousePosX < posX + 0.5f * sizeX && mousePosY > posY - 0.5f * sizeY && mousePosY < posY + 0.5f * sizeY)
 	{ 
-		//std::cout << "Over the button X:" << mousePosX << " Y:" << mousePosY << std::endl;
 		this->setBtnColor(sf::Color::Green);
 		return true;
 	}

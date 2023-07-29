@@ -31,19 +31,26 @@ int main()
 		window.clear();
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			switch (event.type)
+			{
+			case sf::Event::Closed:
 				window.close();
-			if (event.type == sf::Event::MouseMoved)
-				if (addParticleButton.isMouseOver(window) && event.type == sf::Event::MouseButtonReleased) //Action not working
-					std::cout << "Action done";
-		/*	if(event.type == sf::Event::MouseButtonReleased && (sf::Mouse::getPosition().x >= addParticleButton.getPosition().x - ))*/
+				break;
+			case sf::Event::MouseMoved:
+				if (addParticleButton.isMouseOver(window))
+					break;
+			case sf::Event::MouseButtonReleased:
+				if (addParticleButton.isMouseOver(window))
+					std::cout << "Action done" << std::endl;
+				break;
+			}
 		}
+
 		for (auto& particle : particles)
 		{
 			particle.moveParticle();
 			particle.checkCollision(window);
 			window.draw(particle.getShape());
-			//std::cout << particle.getShape().getPosition().x << " " << particle.getShape().getPosition().y << std::endl;
 		}
 		window.draw(addParticleButton.getButton());
 		//window.draw(addParticleButton.getText());
@@ -51,4 +58,3 @@ int main()
 	}
 	return 0;
 }
-
